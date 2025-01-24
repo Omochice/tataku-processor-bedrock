@@ -1,0 +1,81 @@
+---
+name: tataku-processor-bedrock
+description: The processor module for tataku.vim
+---
+
+=pod
+
+=head1 tataku-processor-bedrock X<tataku-processor-bedrock>
+
+The processor module using bedrock.
+
+=head2 Contents X<tataku-processor-bedrock-contents>
+
+=over 0
+
+=item * L<Dependencies|tataku-processor-bedrock-dependencies>
+
+=item * L<Options|tataku-processor-bedrock-options>
+
+=item * L<Samples|tataku-processor-bedrock-samples>
+
+=back
+
+=head2 Dependencies X<tataku-processor-bedrock-dependencies>
+
+This plugin needs:
+
+=over 0
+
+=item * L<denops.vim|https://github.com/vim-denops/denops.vim>
+
+=item * L<tataku.vim|https://github.com/Omochice/tataku.vim>
+
+=back
+
+=head2 Options X<tataku-processor-bedrock-options>
+
+This module has some options.
+
+=over 0
+
+  model: is.String,
+  region: is.String,
+  profile: is.String,
+
+
+=item * C<model> X<tataku-processor-bedrock-options-model>
+
+  Model name
+  Specified model is needed to be installed.
+
+=item * C<region> X<tataku-processor-bedrock-options-region>
+
+  Region name
+
+=item * C<profile> X<tataku-processor-bedrock-options-profile>
+
+  Profile name for loading C<.aws/config>
+
+=back
+
+=head2 Samples X<tataku-processor-bedrock-samples>
+
+=begin vim
+
+let g:tataku_recipes = #{
+  \   sample: #{
+  \     processor: #{
+  \       name: 'bedrock',
+  \       options: #{
+  \         model: 'anthropic.claude-3-sonnet-20240229-v1:0',
+  \         region: 'us-east-1',
+  \         profile: 'sample-profile',
+  \       },
+  \     }
+  \   }
+  \ }
+
+=end vim
+
+=cut
