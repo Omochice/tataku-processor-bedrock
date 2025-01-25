@@ -3,7 +3,7 @@ import "npm:@smithy/eventstream-codec@^2.0.5";
 import { Denops } from "jsr:@denops/std@7.4.0";
 import { assert, is } from "jsr:@core/unknownutil@4.3.0";
 import { toTransformStream } from "jsr:@std/streams@1.0.8/to-transform-stream";
-import { BedrockChat } from "npm:@langchain/community@0.2.21/chat_models/bedrock/web";
+import { BedrockChat } from "npm:@langchain/community@0.3.27/chat_models/bedrock/web";
 import { fromIni } from "npm:@aws-sdk/credential-providers@3.734.0";
 import { HumanMessage } from "npm:@langchain/core@0.2.18/messages";
 import { ProcessorFactory } from "jsr:@omochice/tataku-vim@1.1.0";
