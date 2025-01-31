@@ -1,8 +1,7 @@
 import { Denops } from "jsr:@denops/std@7.4.0";
-import { assert, is } from "jsr:@core/unknownutil@4.3.0";
-import { toTransformStream } from "jsr:@std/streams@1.0.8/to-transform-stream";
+import { as, assert, is } from "jsr:@core/unknownutil@4.3.0";
 import { fromIni } from "npm:@aws-sdk/credential-providers@3.734.0";
-import { ProcessorFactory } from "jsr:@omochice/tataku-vim@1.1.0";
+import { ProcessorFactory } from "jsr:@omochice/tataku-vim@1.2.1";
 import {
   BedrockRuntimeClient,
   type ConverseCommandInput,
@@ -14,6 +13,7 @@ const isOption = is.ObjectOf({
   model: is.String,
   region: is.String,
   profile: is.String,
+  systemPrompt: as.Optional(is.String),
 });
 
 const processor: ProcessorFactory = async (
@@ -29,8 +29,8 @@ const processor: ProcessorFactory = async (
     endpoint: `https://bedrock-runtime.${option.region}.amazonaws.com`,
     credentials,
   });
-  return toTransformStream(async function* (src: ReadableStream<string[]>) {
-    for await (const chunk of src) {
+  return new TransformStream<string[]>({
+    transform: async (chunk, controller) => {
       const messages = chunk.map((text, i): Message => ({
         role: i % 2 === 0 ? "user" : "assistant",
         content: [{ text }],
@@ -38,18 +38,26 @@ const processor: ProcessorFactory = async (
       const input: ConverseCommandInput = {
         modelId: option.model,
         messages,
+        system: option.systemPrompt
+          ? [{ text: option.systemPrompt }]
+          : undefined,
       };
       const command = new ConverseStreamCommand(input);
-      const response = await model.send(command);
-
-      if (response.stream) {
-        for await (const chunk of response.stream) {
-          if (chunk.contentBlockDelta?.delta?.text) {
-            yield [chunk.contentBlockDelta.delta.text];
-          }
+      const response = await model.send<
+        ConverseCommandInput,
+        typeof ConverseStreamCommand["__types"]["sdk"]["output"]
+      >(
+        command,
+      );
+      if (response.stream == null) {
+        return;
+      }
+      for await (const chunk of response.stream) {
+        if (chunk.contentBlockDelta?.delta?.text) {
+          controller.enqueue([chunk.contentBlockDelta.delta.text]);
         }
       }
-    }
+    },
   });
 };
 
