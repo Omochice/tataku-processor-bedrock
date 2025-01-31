@@ -42,6 +42,7 @@ This module has some options.
   model: is.String,
   region: is.String,
   profile: is.String,
+  systemPrompt:? is.String,
 
 
 =item * C<model> X<tataku-processor-bedrock-options-model>
@@ -56,6 +57,10 @@ This module has some options.
 =item * C<profile> X<tataku-processor-bedrock-options-profile>
 
   Profile name for loading C<.aws/config>
+
+=item * C<systemPrompt> X<tataku-processor-bedrock-options-systemPrompt>
+
+  System prompt for the model
 
 =back
 
