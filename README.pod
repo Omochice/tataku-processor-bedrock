@@ -37,30 +37,35 @@ This plugin needs:
 
 This module has some options.
 
+=begin typescript
+
+type Option = {
+  model: string,
+  region: string,
+  profile: string,
+  systemPrompt?: string,
+};
+
+=end typescript
+
 =over 0
-
-  model: is.String,
-  region: is.String,
-  profile: is.String,
-  systemPrompt:? is.String,
-
 
 =item * C<model> X<tataku-processor-bedrock-options-model>
 
-  Model name
-  Specified model is needed to be installed.
+	Model name
+	Specified model is needed to be installed.
 
 =item * C<region> X<tataku-processor-bedrock-options-region>
 
-  Region name
+	Region name
 
 =item * C<profile> X<tataku-processor-bedrock-options-profile>
 
-  Profile name for loading C<.aws/config>
+	Profile name for loading C<.aws/config>
 
 =item * C<systemPrompt> X<tataku-processor-bedrock-options-systemPrompt>
 
-  System prompt for the model
+	System prompt for the model
 
 =back
 
