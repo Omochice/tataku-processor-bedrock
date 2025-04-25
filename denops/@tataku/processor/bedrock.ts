@@ -1,13 +1,13 @@
 import { Denops } from "jsr:@denops/std@7.5.0";
 import { as, assert, is } from "jsr:@core/unknownutil@4.3.0";
-import { fromIni } from "npm:@aws-sdk/credential-providers@3.796.0";
+import { fromIni } from "npm:@aws-sdk/credential-providers@3.797.0";
 import { ProcessorFactory } from "jsr:@omochice/tataku-vim@1.2.1";
 import {
   BedrockRuntimeClient,
   type ConverseCommandInput,
   ConverseStreamCommand,
   type Message,
-} from "npm:@aws-sdk/client-bedrock-runtime@3.796.0";
+} from "npm:@aws-sdk/client-bedrock-runtime@3.797.0";
 
 const isOption = is.ObjectOf({
   model: is.String,
