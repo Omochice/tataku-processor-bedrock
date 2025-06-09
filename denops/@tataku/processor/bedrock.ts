@@ -1,4 +1,4 @@
-import { Denops } from "jsr:@denops/std@7.5.0";
+import { Denops } from "jsr:@denops/std@7.5.1";
 import { as, assert, is } from "jsr:@core/unknownutil@4.3.0";
 import { fromIni } from "npm:@aws-sdk/credential-providers@3.826.0";
 import { ProcessorFactory } from "jsr:@omochice/tataku-vim@1.2.1";
