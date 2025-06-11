@@ -8,4 +8,6 @@ on:
 jobs:
   generate-doc:
     uses: Omochice/tataku-share-actions/.github/workflows/generate-doc.yml@b44d6408476b0997b38a3da6f11d31f63f1a53a2 # v1.0.2
-    secrets: inherit
+    secrets:
+      PODENO_APP_ID: ${{ secrets.PODENO_APP_ID }}
+      PODENO_PRIVATE_KEY: ${{ secrets.PODENO_PRIVATE_KEY }}
