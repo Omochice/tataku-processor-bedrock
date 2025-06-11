@@ -6,25 +6,11 @@ on:
       - main
 
 jobs:
-  get-token:
-    timeout-minutes: 5
-    runs-on: ubuntu-latest
-    permissions: {}
-    outputs:
-      token: ${{ steps.app-token.outputs.token }}
-    steps:
-      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
-        id: app-token
-        with:
-          app-id: ${{ secrets.PODENO_APP_ID }}
-          private-key: ${{ secrets.PODENO_PRIVATE_KEY }}
-          permission-contents: write
-          permission-pull-requests: write
   generate-doc:
-    needs: get-token
     uses: Omochice/tataku-share-actions/.github/workflows/generate-doc.yml@7ca14ea5e95129f7d88e75ecdcb23951ee96251e # v1.0.4
     permissions:
       contents: write
       pull-requests: write
     secrets:
-      token: ${{ needs.get-token.outputs.token }}
+      APP_ID: ${{ secrets.PODENO_APP_ID }}
+      PRIVATE_KEY: ${{ secrets.PODENO_PRIVATE_KEY }}
