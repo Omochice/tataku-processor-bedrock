@@ -4,4 +4,14 @@
     "github>Omochice/personal-renovate-config",
     "github>Omochice/renovate-config:deno",
   ],
+  lockFileMaintenance: {
+    enabled: true,
+    automerge: true,
+    schedule: [
+      "before 3:00am",
+    ],
+  },
+  nix: {
+    enabled: true,
+  },
 }
