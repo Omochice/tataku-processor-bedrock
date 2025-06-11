@@ -22,7 +22,7 @@ jobs:
           permission-pull-requests: write
   generate-doc:
     needs: get-token
-    uses: Omochice/tataku-share-actions/.github/workflows/generate-doc.yml@afbf9f2ac6464bc14aa7ac28e14e2b92e800dd3a # v1.0.3
+    uses: Omochice/tataku-share-actions/.github/workflows/generate-doc.yml@7ca14ea5e95129f7d88e75ecdcb23951ee96251e # v1.0.4
     permissions:
       contents: write
       pull-requests: write
