@@ -1,17 +1,6 @@
 {
   $schema: "https://docs.renovatebot.com/renovate-schema.json",
   extends: [
-    "github>Omochice/personal-renovate-config",
-    "github>Omochice/renovate-config:deno",
+    "github>Omochice/tataku-share-actions#v1.1.0",
   ],
-  lockFileMaintenance: {
-    enabled: true,
-    automerge: true,
-    schedule: [
-      "before 3:00am",
-    ],
-  },
-  nix: {
-    enabled: true,
-  },
 }
