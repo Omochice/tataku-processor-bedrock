@@ -1,6 +1,6 @@
 import { Denops } from "jsr:@denops/std@7.6.0";
 import { as, assert, is } from "jsr:@core/unknownutil@4.3.0";
-import { fromIni } from "npm:@aws-sdk/credential-providers@3.901.0";
+import { fromIni } from "npm:@aws-sdk/credential-providers@3.906.0";
 import { ProcessorFactory } from "jsr:@omochice/tataku-vim@1.2.1";
 import {
   BedrockRuntimeClient,
