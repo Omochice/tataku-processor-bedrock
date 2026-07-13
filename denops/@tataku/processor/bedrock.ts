@@ -7,7 +7,7 @@ import {
   type ConverseCommandInput,
   ConverseStreamCommand,
   type Message,
-} from "npm:@aws-sdk/client-bedrock-runtime@3.1084.0";
+} from "npm:@aws-sdk/client-bedrock-runtime@3.1085.0";
 
 const isOption = is.ObjectOf({
   model: is.String,
